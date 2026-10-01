@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "tertiary": "#655d58",
+        "secondary-fixed-dim": "#ffb4a1",
+        "on-error-container": "#93000a",
+        "on-primary-fixed": "#3c0800",
+        "error": "#ba1a1a",
+        "surface-container-lowest": "#ffffff",
+        "on-background": "#231a11",
+        "surface-container-high": "#f8e5d6",
+        "on-tertiary-fixed-variant": "#4d4541",
+        "on-secondary-fixed-variant": "#7f2b14",
+        "background": "#fff8f5",
+        "surface-container-highest": "#f2dfd1",
+        "surface-container-low": "#fff1e8",
+        "on-secondary-fixed": "#3c0800",
+        "surface-tint": "#9a442d",
+        "secondary": "#9e4129",
+        "on-secondary-container": "#75230d",
+        "secondary-fixed": "#ffdbd2",
+        "tertiary-fixed-dim": "#d0c4bf",
+        "inverse-on-surface": "#ffeee1",
+        "on-primary-container": "#5b1604",
+        "on-secondary": "#ffffff",
+        "primary-fixed-dim": "#ffb4a1",
+        "surface-container": "#feeadc",
+        "on-primary": "#ffffff",
+        "primary-fixed": "#ffdbd2",
+        "primary": "#9a442d",
+        "outline": "#88726d",
+        "on-primary-fixed-variant": "#7c2e19",
+        "primary-container": "#e07a5f",
+        "tertiary-container": "#9f948f",
+        "on-tertiary-container": "#342d2a",
+        "error-container": "#ffdad6",
+        "surface-dim": "#e9d7c8",
+        "on-surface": "#231a11",
+        "surface-variant": "#f2dfd1",
+        "surface-bright": "#fff8f5",
+        "outline-variant": "#dbc1ba",
+        "tertiary-fixed": "#ede0da",
+        "on-tertiary-fixed": "#201a17",
+        "on-tertiary": "#ffffff",
+        "secondary-container": "#ff8b6d",
+        "on-error": "#ffffff",
+        "inverse-primary": "#ffb4a1",
+        "on-surface-variant": "#55423e",
+        "inverse-surface": "#392e25",
+        "surface": "#fff8f5"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-sm": "0.5rem",
+        "space-xl": "2.5rem",
+        "space-xs": "0.25rem",
+        "gutter": "1.5rem",
+        "space-md": "1rem",
+        "space-lg": "1.5rem",
+        "margin": "2rem"
+      },
+      "fontFamily": {
+        "label-sm": [
+          "Work Sans"
+        ],
+        "label-md": [
+          "Work Sans"
+        ],
+        "body-sm": [
+          "Work Sans"
+        ],
+        "body-lg": [
+          "Work Sans"
+        ],
+        "headline-sm": [
+          "Newsreader"
+        ],
+        "body-md": [
+          "Work Sans"
+        ],
+        "headline-md": [
+          "Newsreader"
+        ],
+        "headline-lg": [
+          "Newsreader"
+        ],
+        "headline-lg-mobile": [
+          "Newsreader"
+        ]
+      },
+      "fontSize": {
+        "label-sm": [
+          "12px",
+          {
+            "lineHeight": "16px",
+            "fontWeight": "500"
+          }
+        ],
+        "label-md": [
+          "14px",
+          {
+            "lineHeight": "20px",
+            "fontWeight": "500"
+          }
+        ],
+        "body-sm": [
+          "12px",
+          {
+            "lineHeight": "16px",
+            "fontWeight": "400"
+          }
+        ],
+        "body-lg": [
+          "16px",
+          {
+            "lineHeight": "24px",
+            "fontWeight": "400"
+          }
+        ],
+        "headline-sm": [
+          "18px",
+          {
+            "lineHeight": "24px",
+            "fontWeight": "500"
+          }
+        ],
+        "body-md": [
+          "14px",
+          {
+            "lineHeight": "20px",
+            "fontWeight": "400"
+          }
+        ],
+        "headline-md": [
+          "24px",
+          {
+            "lineHeight": "30px",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-lg": [
+          "32px",
+          {
+            "lineHeight": "40px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-lg-mobile": [
+          "26px",
+          {
+            "lineHeight": "32px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+  }
+}</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body text-on-surface"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-low z-40 flex items-center justify-between px-gutter border-b border-[#E5DDD0]"><div class="flex items-center gap-space-md"><img alt="ReachInbox Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgXkcwdxRPAms5eDY2Bb1sRF4vcKbt-fwUq3fAI6kqXbljRU5X4rKmCf5Y4MGZefQLUF9Pez_HI-RJ6UnIEa-4-dhNzle8kOxglOm_uYwjvPVsY3yaNbIsL-tHVGflN9GHOJpi_zCaRw27yvm_y_-wYZ4gYiUgBZmjkuOOvmHfDzQP84eJHKu0mprQOVxoPg1vwl3jpvLnnIR2Cn7ejcA0HothSDHEnq-utWn_e3X-f9J9NDX-RryX"/><span class="font-headline-md font-bold text-on-surface">ReachInbox</span><span class="text-xs bg-primary-container text-on-primary-container px-space-sm py-space-xs rounded-full font-label-sm">Scheduler v2.0</span></div><nav class="flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-xl"><a class="px-space-md py-space-sm text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="campaigns-and-scheduler" href="#">Campaigns &amp; Scheduler</a><a class="px-space-md py-space-sm text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="bullmq-worker-monitor" href="#">BullMQ Dashboard</a></nav><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-xs rounded-full text-xs text-on-surface"><span class="w-2 h-2 rounded-full bg-emerald-600"></span>Slack Connected</div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="text-sm font-medium text-on-surface">Alex M.</span><button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-24">
+<!-- Top Banner / Editorial Header -->
+<div class="px-8 pt-8 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs uppercase font-label-sm tracking-widest text-primary">Outreach Engine</span>
+<span class="text-xs text-outline">/</span>
+<span class="text-xs font-label-sm text-on-surface-variant">Scheduler v2.0</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Email Campaigns &amp; Scheduler</h1>
+<p class="text-body-md text-on-surface-variant mt-1">Manage automated cold outreach sequences and SMTP queue workers</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary hover:bg-[#D46A4E] text-on-primary px-5 py-2.5 rounded-lg text-label-md font-medium transition-colors flex items-center gap-2 cursor-pointer shadow-sm" id="open-compose-btn">
+<span class="material-symbols-outlined text-[20px]">add</span>
+        + Compose New Email
+      </button>
+</div>
+</div>
+<!-- Metric Cards Grid -->
+<div class="px-8 grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-[#E5DDD0] shadow-sm relative overflow-hidden group hover:border-outline-variant transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-md text-on-surface-variant">Scheduled in Queue</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_clock</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3 mb-2">
+<span class="text-3xl font-headline-lg text-on-surface font-bold tracking-tight">1,248</span>
+<span class="text-xs bg-primary-container/20 text-on-primary-container px-2 py-0.5 rounded font-medium">Pending</span>
+</div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        Next batch in 4m
+      </div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-[#E5DDD0] shadow-sm relative overflow-hidden group hover:border-outline-variant transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-md text-on-surface-variant">Sent (Live SMTP)</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">mark_email_read</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3 mb-2">
+<span class="text-3xl font-headline-lg text-on-surface font-bold tracking-tight">8,420</span>
+<span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Delivered</span>
+</div>
+<div class="text-xs text-emerald-700 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+        98.4% deliverability rate
+      </div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-[#E5DDD0] shadow-sm relative overflow-hidden group hover:border-outline-variant transition-all">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-md text-on-surface-variant">Queue Worker Status</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">dns</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3 mb-2">
+<span class="text-3xl font-headline-lg text-on-surface font-bold tracking-tight">BullMQ</span>
+<span class="text-xs bg-[#EFF5EE] text-[#4A7C59] px-2 py-0.5 rounded font-medium border border-[#4A7C59]/20">Active</span>
+</div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4A7C59]"></span>
+        Concurrency: 5 Redis Workers
+      </div>
+</div>
+</div>
+<!-- Navigation & Search Section -->
+<div class="px-8 mb-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+<!-- Segmented Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-xl border border-[#E5DDD0] w-fit">
+<button class="px-4 py-2 rounded-lg text-label-md font-medium transition-all bg-[#FDF0EA] text-primary shadow-sm flex items-center gap-2 cursor-pointer" id="tab-scheduled" onclick="switchTab('scheduled')">
+<span>Scheduled Emails</span>
+<span class="text-xs bg-primary text-on-primary px-1.5 py-0.5 rounded-full">1,248</span>
+</button>
+<button class="px-4 py-2 rounded-lg text-label-md font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-2 cursor-pointer" id="tab-sent" onclick="switchTab('sent')">
+<span>Sent Emails</span>
+<span class="text-xs bg-surface-container-high text-on-surface px-1.5 py-0.5 rounded-full">8,420</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full sm:w-80">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-colors" id="table-search" oninput="filterTables()" placeholder="Search recipient, subject..." type="text"/>
+</div>
+</div>
+<!-- Tables Section Container -->
+<div class="px-8">
+<div class="bg-surface-container-lowest rounded-xl border border-[#E5DDD0] shadow-sm overflow-hidden">
+<!-- SCHEDULED TABLE -->
+<div class="overflow-x-auto" id="container-scheduled">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-[#E5DDD0] text-label-md text-on-surface-variant font-medium">
+<th class="py-3 px-4">Recipient</th>
+<th class="py-3 px-4">Subject</th>
+<th class="py-3 px-4">Sender Email</th>
+<th class="py-3 px-4">Scheduled Time</th>
+<th class="py-3 px-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5DDD0] text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs">JD</div>
+<div>
+<div class="font-medium">Jonathan Davis</div>
+<div class="text-xs text-on-surface-variant">jonathan@stripe.com</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Scaling B2B outbound infrastructure in Q3</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">alex@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Today, 2:45 PM</td>
+<td class="py-3 px-4"><span class="bg-[#FDF0EA] text-[#C9684D] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#C9684D]"></span>Scheduled</span></td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">SL</div>
+<div>
+<div class="font-medium">Sarah Lin</div>
+<div class="text-xs text-on-surface-variant">slin@linear.app</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Automating BullMQ queue workers for cold lists</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">outreach@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Today, 3:15 PM</td>
+<td class="py-3 px-4"><span class="bg-[#FDF0EA] text-[#C9684D] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#C9684D]"></span>Scheduled</span></td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-xs">MR</div>
+<div>
+<div class="font-medium">Marcus Ross</div>
+<div class="text-xs text-on-surface-variant">mross@vercel.com</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Streamlining multi-channel inbox syncing</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">alex@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Today, 4:00 PM</td>
+<td class="py-3 px-4"><span class="bg-[#FDF0EA] text-[#C9684D] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#C9684D]"></span>Scheduled</span></td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold text-xs">EP</div>
+<div>
+<div class="font-medium">Elena Petrova</div>
+<div class="text-xs text-on-surface-variant">elena@supabase.io</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Database triggers for sequence tracking</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">sales@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Tomorrow, 9:00 AM</td>
+<td class="py-3 px-4"><span class="bg-[#FDF0EA] text-[#C9684D] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#C9684D]"></span>Scheduled</span></td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xs">DK</div>
+<div>
+<div class="font-medium">David Kim</div>
+<div class="text-xs text-on-surface-variant">dkim@segment.com</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Data pipeline reliability for warm leads</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">alex@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Tomorrow, 10:30 AM</td>
+<td class="py-3 px-4"><span class="bg-[#FDF0EA] text-[#C9684D] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#C9684D]"></span>Scheduled</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- SENT TABLE (Hidden by default) -->
+<div class="overflow-x-auto hidden" id="container-sent">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-[#E5DDD0] text-label-md text-on-surface-variant font-medium">
+<th class="py-3 px-4">Recipient</th>
+<th class="py-3 px-4">Subject</th>
+<th class="py-3 px-4">Sender Email</th>
+<th class="py-3 px-4">Sent Time</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5DDD0] text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#EFF5EE] text-[#4A7C59] flex items-center justify-center font-bold text-xs">AM</div>
+<div>
+<div class="font-medium">Amanda Miller</div>
+<div class="text-xs text-on-surface-variant">amanda@figma.com</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Quick question regarding design tokens</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">alex@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Today, 11:20 AM</td>
+<td class="py-3 px-4"><span class="bg-[#EFF5EE] text-[#4A7C59] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#4A7C59]"></span>Sent</span></td>
+<td class="py-3 px-4 text-right">
+<button class="text-xs bg-surface-container-high hover:bg-surface-variant text-on-surface px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 cursor-pointer" onclick="openPreviewModal('Quick question regarding design tokens', 'amanda@figma.com', 'alex@reachinbox.ai', 'Today, 11:20 AM')">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Preview
+                </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#EFF5EE] text-[#4A7C59] flex items-center justify-center font-bold text-xs">RJ</div>
+<div>
+<div class="font-medium">Ryan Johnson</div>
+<div class="text-xs text-on-surface-variant">ryan@notion.so</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Collaborative workspaces &amp; email scheduling</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">outreach@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Today, 10:05 AM</td>
+<td class="py-3 px-4"><span class="bg-[#EFF5EE] text-[#4A7C59] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#4A7C59]"></span>Sent</span></td>
+<td class="py-3 px-4 text-right">
+<button class="text-xs bg-surface-container-high hover:bg-surface-variant text-on-surface px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 cursor-pointer" onclick="openPreviewModal('Collaborative workspaces &amp; email scheduling', 'ryan@notion.so', 'outreach@reachinbox.ai', 'Today, 10:05 AM')">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Preview
+                </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#EFF5EE] text-[#4A7C59] flex items-center justify-center font-bold text-xs">CH</div>
+<div>
+<div class="font-medium">Chloe Hanson</div>
+<div class="text-xs text-on-surface-variant">chloe@github.com</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Pull request automation in cold outreach</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">alex@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Yesterday, 4:40 PM</td>
+<td class="py-3 px-4"><span class="bg-[#EFF5EE] text-[#4A7C59] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#4A7C59]"></span>Sent</span></td>
+<td class="py-3 px-4 text-right">
+<button class="text-xs bg-surface-container-high hover:bg-surface-variant text-on-surface px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 cursor-pointer" onclick="openPreviewModal('Pull request automation in cold outreach', 'chloe@github.com', 'alex@reachinbox.ai', 'Yesterday, 4:40 PM')">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Preview
+                </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#EFF5EE] text-[#4A7C59] flex items-center justify-center font-bold text-xs">TW</div>
+<div>
+<div class="font-medium">Tyler Watson</div>
+<div class="text-xs text-on-surface-variant">tyler@loom.com</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Async video prospecting sequences</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">sales@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">Yesterday, 2:10 PM</td>
+<td class="py-3 px-4"><span class="bg-[#EFF5EE] text-[#4A7C59] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#4A7C59]"></span>Sent</span></td>
+<td class="py-3 px-4 text-right">
+<button class="text-xs bg-surface-container-high hover:bg-surface-variant text-on-surface px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 cursor-pointer" onclick="openPreviewModal('Async video prospecting sequences', 'tyler@loom.com', 'sales@reachinbox.ai', 'Yesterday, 2:10 PM')">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Preview
+                </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors search-row">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#EFF5EE] text-[#4A7C59] flex items-center justify-center font-bold text-xs">SK</div>
+<div>
+<div class="font-medium">Sophia Keller</div>
+<div class="text-xs text-on-surface-variant">sophia@intercom.io</div>
+</div>
+</td>
+<td class="py-3 px-4 font-medium text-on-surface">Customer support inbox synchronization</td>
+<td class="py-3 px-4"><span class="bg-[#F4EFE6] px-2 py-1 rounded text-xs font-mono text-on-surface-variant">alex@reachinbox.ai</span></td>
+<td class="py-3 px-4 text-on-surface-variant">2 days ago</td>
+<td class="py-3 px-4"><span class="bg-[#EFF5EE] text-[#4A7C59] px-2.5 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#4A7C59]"></span>Sent</span></td>
+<td class="py-3 px-4 text-right">
+<button class="text-xs bg-surface-container-high hover:bg-surface-variant text-on-surface px-3 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 cursor-pointer" onclick="openPreviewModal('Customer support inbox synchronization', 'sophia@intercom.io', 'alex@reachinbox.ai', '2 days ago')">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+                  View Preview
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- COMPOSE MODAL (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-[#2B2118]/40 backdrop-blur-xs flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200" id="compose-modal">
+<div class="bg-surface-container-lowest w-full max-w-3xl rounded-xl border border-[#D8CEBE] shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-[#E5DDD0] flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">edit_note</span>
+<h2 class="font-headline-sm text-on-surface font-bold">Compose &amp; Schedule Outreach</h2>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container transition-colors cursor-pointer" onclick="closeComposeModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-6 overflow-y-auto space-y-5 flex-1">
+<!-- Sender Email -->
+<div>
+<label class="block text-label-md text-on-surface font-medium mb-1.5">Sender Email Address</label>
+<select class="w-full px-3 py-2 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-md text-on-surface focus:outline-none focus:border-primary">
+<option>alex@reachinbox.ai (Primary SMTP)</option>
+<option>outreach@reachinbox.ai (Warmup Pool B)</option>
+<option>sales@reachinbox.ai (Dedicated IP)</option>
+</select>
+</div>
+<!-- Subject -->
+<div>
+<label class="block text-label-md text-on-surface font-medium mb-1.5">Email Subject Line</label>
+<input class="w-full px-3 py-2 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary" placeholder="e.g., Scaling outbound infrastructure with ReachInbox" type="text"/>
+</div>
+<!-- Body Rich Textarea -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block text-label-md text-on-surface font-medium">Email Body &amp; Variables</label>
+<div class="flex items-center gap-1 bg-surface-container-low border border-[#E5DDD0] rounded px-2 py-1 text-xs text-on-surface-variant">
+<button class="hover:text-on-surface px-1 font-bold">B</button>
+<button class="hover:text-on-surface px-1 italic">I</button>
+<span class="text-outline">|</span>
+<button class="hover:text-on-surface px-1 font-mono">{firstName}</button>
+<button class="hover:text-on-surface px-1 font-mono">{company}</button>
+</div>
+</div>
+<textarea class="w-full p-3 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary" placeholder="Hi {{firstName}}, I noticed you're scaling outreach at {{company}}..." rows="5"></textarea>
+</div>
+<!-- 2D Lead Upload Area -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="block text-label-md text-on-surface font-medium">Recipients &amp; Lead Source</label>
+<span class="text-xs bg-[#FDF0EA] text-[#C9684D] px-2 py-0.5 rounded-full font-medium border border-[#C9684D]/20">Parsed 250 leads</span>
+</div>
+<div class="border-2 border-dashed border-[#D8CEBE] rounded-xl p-6 text-center bg-surface-container-low/50 hover:bg-surface-container-low transition-colors cursor-pointer mb-3">
+<span class="material-symbols-outlined text-primary text-[32px] mb-2">upload_file</span>
+<div class="text-body-md font-medium text-on-surface">Click to upload CSV or TXT lead list</div>
+<div class="text-xs text-on-surface-variant mt-1">Supports name, email, company columns (Max 5,000 rows)</div>
+</div>
+<textarea class="w-full p-3 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary font-mono" placeholder="Or paste comma/newline separated emails here..." rows="2"></textarea>
+</div>
+<!-- Throttling & Rate Limit Settings Box -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-[#E5DDD0]">
+<div class="text-label-md font-medium text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+            Throttling &amp; BullMQ Rate Limit Settings
+          </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<label class="block text-xs text-on-surface-variant mb-1">Start Time</label>
+<input class="w-full px-3 py-1.5 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-sm text-on-surface focus:outline-none focus:border-primary" type="datetime-local"/>
+</div>
+<div>
+<label class="block text-xs text-on-surface-variant mb-1">Inter-email Delay (sec)</label>
+<input class="w-full px-3 py-1.5 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-sm text-on-surface focus:outline-none focus:border-primary" type="number" value="45"/>
+</div>
+<div>
+<label class="block text-xs text-on-surface-variant mb-1">Hourly Limit (emails/hr)</label>
+<input class="w-full px-3 py-1.5 bg-surface-container-lowest border border-[#E5DDD0] rounded-lg text-body-sm text-on-surface focus:outline-none focus:border-primary" type="number" value="120"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-6 py-4 border-t border-[#E5DDD0] flex items-center justify-end gap-3 bg-surface-container-low">
+<button class="px-4 py-2 rounded-lg text-label-md font-medium text-on-surface hover:bg-surface-container transition-colors cursor-pointer" onclick="closeComposeModal()">
+          Cancel
+        </button>
+<button class="bg-primary hover:bg-[#D46A4E] text-on-primary px-5 py-2 rounded-lg text-label-md font-medium transition-colors shadow-sm cursor-pointer" onclick="closeComposeModal()">
+          Schedule Emails
+        </button>
+</div>
+</div>
+</div>
+<!-- LIVE SMTP PREVIEW MODAL (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-[#2B2118]/40 backdrop-blur-xs flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-200" id="preview-modal">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-xl border border-[#D8CEBE] shadow-xl overflow-hidden flex flex-col">
+<!-- Preview Header -->
+<div class="px-6 py-4 border-b border-[#E5DDD0] flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-700 text-[20px]">mark_email_read</span>
+<h3 class="font-headline-sm text-on-surface font-bold">Live SMTP Email Preview</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container transition-colors cursor-pointer" onclick="closePreviewModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Preview Content -->
+<div class="p-6 space-y-4">
+<div class="bg-surface-container-low p-4 rounded-lg border border-[#E5DDD0] space-y-2 text-xs">
+<div class="flex justify-between"><span class="text-outline">To:</span> <span class="font-medium text-on-surface" id="preview-recipient">amanda@figma.com</span></div>
+<div class="flex justify-between"><span class="text-outline">From:</span> <span class="font-mono text-on-surface-variant" id="preview-sender">alex@reachinbox.ai</span></div>
+<div class="flex justify-between"><span class="text-outline">Dispatched:</span> <span class="text-on-surface-variant" id="preview-time">Today, 11:20 AM</span></div>
+<div class="flex justify-between"><span class="text-outline">SMTP Status:</span> <span class="text-emerald-700 font-medium">Delivered (250 OK - Message accepted for delivery)</span></div>
+</div>
+<div>
+<div class="text-xs font-label-sm text-outline uppercase tracking-wider mb-1">Rendered Subject</div>
+<div class="font-headline-sm font-bold text-on-surface" id="preview-subject">Quick question regarding design tokens</div>
+</div>
+<div>
+<div class="text-xs font-label-sm text-outline uppercase tracking-wider mb-1">Rendered Body</div>
+<div class="bg-surface-container-lowest border border-[#E5DDD0] p-4 rounded-lg text-body-md text-on-surface font-body space-y-3">
+<p>Hi Amanda,</p>
+<p>I noticed your work on design systems at Figma and wanted to share how our automated cold outreach scheduler handles multi-channel thread syncing without getting flagged by filters.</p>
+<p>Would you be open to a 5-minute Loom walkthrough this Thursday?</p>
+<p class="text-on-surface-variant pt-2">Best regards,<br/>Alex M.</p>
+</div>
+</div>
+</div>
+<!-- Preview Footer -->
+<div class="px-6 py-3 border-t border-[#E5DDD0] flex items-center justify-end bg-surface-container-low">
+<button class="bg-surface-container-high hover:bg-surface-variant text-on-surface px-4 py-2 rounded-lg text-label-md font-medium transition-colors cursor-pointer" onclick="closePreviewModal()">
+          Close Preview
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript -->
+<script>
+    // Tab Switching Logic
+    function switchTab(tabName) {
+      const scheduledTab = document.getElementById('tab-scheduled');
+      const sentTab = document.getElementById('tab-sent');
+      const scheduledContainer = document.getElementById('container-scheduled');
+      const sentContainer = document.getElementById('container-sent');
+
+      if (tabName === 'scheduled') {
+        scheduledTab.className = "px-4 py-2 rounded-lg text-label-md font-medium transition-all bg-[#FDF0EA] text-primary shadow-sm flex items-center gap-2 cursor-pointer";
+        sentTab.className = "px-4 py-2 rounded-lg text-label-md font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-2 cursor-pointer";
+        scheduledContainer.classList.remove('hidden');
+        sentContainer.classList.add('hidden');
+      } else {
+        sentTab.className = "px-4 py-2 rounded-lg text-label-md font-medium transition-all bg-[#FDF0EA] text-primary shadow-sm flex items-center gap-2 cursor-pointer";
+        scheduledTab.className = "px-4 py-2 rounded-lg text-label-md font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-2 cursor-pointer";
+        sentContainer.classList.remove('hidden');
+        scheduledContainer.classList.add('hidden');
+      }
+      filterTables();
+    }
+
+    // Real-time Search Filtering Logic
+    function filterTables() {
+      const query = document.getElementById('table-search').value.toLowerCase();
+      const rows = document.querySelectorAll('.search-row');
+      
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(query)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Compose Modal Toggle Logic
+    const composeModal = document.getElementById('compose-modal');
+    const openComposeBtn = document.getElementById('open-compose-btn');
+
+    openComposeBtn.addEventListener('click', () => {
+      composeModal.classList.remove('hidden');
+      setTimeout(() => composeModal.classList.remove('opacity-0'), 10);
+    });
+
+    function closeComposeModal() {
+      composeModal.classList.add('opacity-0');
+      setTimeout(() => composeModal.classList.add('hidden'), 200);
+    }
+
+    // Preview Modal Logic
+    const previewModal = document.getElementById('preview-modal');
+    
+    function openPreviewModal(subject, recipient, sender, time) {
+      document.getElementById('preview-subject').innerText = subject;
+      document.getElementById('preview-recipient').innerText = recipient;
+      document.getElementById('preview-sender').innerText = sender;
+      document.getElementById('preview-time').innerText = time;
+
+      previewModal.classList.remove('hidden');
+      setTimeout(() => previewModal.classList.remove('opacity-0'), 10);
+    }
+
+    function closePreviewModal() {
+      previewModal.classList.add('opacity-0');
+      setTimeout(() => previewModal.classList.add('hidden'), 200);
+    }
+
+    // Close modals on clicking backdrop
+    composeModal.addEventListener('click', (e) => {
+      if (e.target === composeModal) closeComposeModal();
+    });
+
+    previewModal.addEventListener('click', (e) => {
+      if (e.target === previewModal) closePreviewModal();
+    });
+  </script>
+</div></main></body></html>

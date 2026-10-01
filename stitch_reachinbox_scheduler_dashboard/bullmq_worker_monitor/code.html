@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "tertiary": "#655d58",
+        "secondary-fixed-dim": "#ffb4a1",
+        "on-error-container": "#93000a",
+        "on-primary-fixed": "#3c0800",
+        "error": "#ba1a1a",
+        "surface-container-lowest": "#ffffff",
+        "on-background": "#231a11",
+        "surface-container-high": "#f8e5d6",
+        "on-tertiary-fixed-variant": "#4d4541",
+        "on-secondary-fixed-variant": "#7f2b14",
+        "background": "#fff8f5",
+        "surface-container-highest": "#f2dfd1",
+        "surface-container-low": "#fff1e8",
+        "on-secondary-fixed": "#3c0800",
+        "surface-tint": "#9a442d",
+        "secondary": "#9e4129",
+        "on-secondary-container": "#75230d",
+        "secondary-fixed": "#ffdbd2",
+        "tertiary-fixed-dim": "#d0c4bf",
+        "inverse-on-surface": "#ffeee1",
+        "on-primary-container": "#5b1604",
+        "on-secondary": "#ffffff",
+        "primary-fixed-dim": "#ffb4a1",
+        "surface-container": "#feeadc",
+        "on-primary": "#ffffff",
+        "primary-fixed": "#ffdbd2",
+        "primary": "#9a442d",
+        "outline": "#88726d",
+        "on-primary-fixed-variant": "#7c2e19",
+        "primary-container": "#e07a5f",
+        "tertiary-container": "#9f948f",
+        "on-tertiary-container": "#342d2a",
+        "error-container": "#ffdad6",
+        "surface-dim": "#e9d7c8",
+        "on-surface": "#231a11",
+        "surface-variant": "#f2dfd1",
+        "surface-bright": "#fff8f5",
+        "outline-variant": "#dbc1ba",
+        "tertiary-fixed": "#ede0da",
+        "on-tertiary-fixed": "#201a17",
+        "on-tertiary": "#ffffff",
+        "secondary-container": "#ff8b6d",
+        "on-error": "#ffffff",
+        "inverse-primary": "#ffb4a1",
+        "on-surface-variant": "#55423e",
+        "inverse-surface": "#392e25",
+        "surface": "#fff8f5"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-sm": "0.5rem",
+        "space-xl": "2.5rem",
+        "space-xs": "0.25rem",
+        "gutter": "1.5rem",
+        "space-md": "1rem",
+        "space-lg": "1.5rem",
+        "margin": "2rem"
+      },
+      "fontFamily": {
+        "label-sm": [
+          "Work Sans"
+        ],
+        "label-md": [
+          "Work Sans"
+        ],
+        "body-sm": [
+          "Work Sans"
+        ],
+        "body-lg": [
+          "Work Sans"
+        ],
+        "headline-sm": [
+          "Newsreader"
+        ],
+        "body-md": [
+          "Work Sans"
+        ],
+        "headline-md": [
+          "Newsreader"
+        ],
+        "headline-lg": [
+          "Newsreader"
+        ],
+        "headline-lg-mobile": [
+          "Newsreader"
+        ]
+      },
+      "fontSize": {
+        "label-sm": [
+          "12px",
+          {
+            "lineHeight": "16px",
+            "fontWeight": "500"
+          }
+        ],
+        "label-md": [
+          "14px",
+          {
+            "lineHeight": "20px",
+            "fontWeight": "500"
+          }
+        ],
+        "body-sm": [
+          "12px",
+          {
+            "lineHeight": "16px",
+            "fontWeight": "400"
+          }
+        ],
+        "body-lg": [
+          "16px",
+          {
+            "lineHeight": "24px",
+            "fontWeight": "400"
+          }
+        ],
+        "headline-sm": [
+          "18px",
+          {
+            "lineHeight": "24px",
+            "fontWeight": "500"
+          }
+        ],
+        "body-md": [
+          "14px",
+          {
+            "lineHeight": "20px",
+            "fontWeight": "400"
+          }
+        ],
+        "headline-md": [
+          "24px",
+          {
+            "lineHeight": "30px",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-lg": [
+          "32px",
+          {
+            "lineHeight": "40px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ],
+        "headline-lg-mobile": [
+          "26px",
+          {
+            "lineHeight": "32px",
+            "letterSpacing": "-0.01em",
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+  }
+}</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body text-on-surface"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-low z-40 flex items-center justify-between px-gutter border-b border-[#E5DDD0]"><div class="flex items-center gap-space-md"><img alt="ReachInbox Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWcl9IhzKVfYzux_Ovted6830ajEoPpgkhgGUQvtT4DKgpSxjNHRj29FYKd9INo-3oOihbKsYS745VIZBjjOLQWGB2LHd-Qc68Ks3v8nYw1YB15C82m36fxrzOUt9bm4jLZGBgRv2E9zFZ4ut7zXVuPsylQfb2lX2X5ONeCR9jOz9bydis61gGg0aSt0zw8X0OTw1ajqwUEI2-SyOZv5T2seAQy4ND-F2risFxA31hhYMhc8uaaXUR"/><span class="font-headline-md font-bold text-on-surface">ReachInbox</span><span class="text-xs bg-primary-container text-on-primary-container px-space-sm py-space-xs rounded-full font-label-sm">Scheduler v2.0</span></div><nav class="flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-xl"><a class="px-space-md py-space-sm text-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="campaigns-and-scheduler" href="#">Campaigns &amp; Scheduler</a><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-bold rounded-xl" data-path="bullmq-worker-monitor" href="#">BullMQ Dashboard</a></nav><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-space-xs rounded-full text-xs text-on-surface"><span class="w-2 h-2 rounded-full bg-emerald-600"></span>Slack Connected</div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="text-sm font-medium text-on-surface">Alex M.</span><button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full bg-surface text-on-surface px-margin py-space-xl">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-lg border-b border-[#E5DDD0]">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-md">
+<h1 class="font-headline-lg text-on-surface">BullMQ Worker Monitor</h1>
+<span class="px-space-sm py-space-xs bg-surface-container-high text-on-surface rounded-full text-label-sm flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span> Cluster Healthy
+        </span>
+</div>
+<p class="font-body-md text-on-surface-variant">Real-time Redis queue telemetry, worker threads, and SMTP throughput</p>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="px-space-md py-space-sm bg-surface-container-lowest text-on-surface border border-[#E5DDD0] rounded-lg text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-space-sm" onclick="refreshMetrics()">
+<span class="material-symbols-outlined text-[18px]">refresh</span> Refresh Telemetry
+      </button>
+<button class="px-space-md py-space-sm bg-primary text-on-primary rounded-lg text-label-md hover:bg-primary-container transition-colors flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]">bolt</span> Scale Workers
+      </button>
+</div>
+</div>
+<!-- Overview Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter my-space-lg">
+<!-- Active Workers -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-[#E5DDD0] flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-label-md uppercase tracking-wider">Active Workers</span>
+<span class="material-symbols-outlined text-[20px] text-primary">engineering</span>
+</div>
+<div class="my-space-md">
+<div class="text-headline-lg font-headline-md text-on-surface">5 / 5</div>
+<div class="text-body-sm text-emerald-600 mt-space-xs">Concurrency maxed</div>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-full"></div>
+</div>
+</div>
+<!-- Redis Memory -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-[#E5DDD0] flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-label-md uppercase tracking-wider">Redis Memory</span>
+<span class="material-symbols-outlined text-[20px] text-primary">database</span>
+</div>
+<div class="my-space-md">
+<div class="text-headline-lg font-headline-md text-on-surface">42.8 MB</div>
+<div class="text-body-sm text-on-surface-variant mt-space-xs">TTL active (24h sweep)</div>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[42%]"></div>
+</div>
+</div>
+<!-- Failed Jobs -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-[#E5DDD0] flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-label-md uppercase tracking-wider">Failed Jobs (Dead Letter)</span>
+<span class="material-symbols-outlined text-[20px] text-error">error</span>
+</div>
+<div class="my-space-md flex items-baseline justify-between">
+<div>
+<div class="text-headline-lg font-headline-md text-error" id="failed-count">3</div>
+<div class="text-body-sm text-error-container mt-space-xs">SMTP 550 Mailbox unavailable</div>
+</div>
+<button class="px-space-sm py-space-xs bg-error-container text-on-error-container rounded text-label-sm hover:opacity-80 transition-opacity" onclick="retryAllJobs()">
+          Retry All
+        </button>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[15%]"></div>
+</div>
+</div>
+<!-- Throughput -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-[#E5DDD0] flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="text-label-md uppercase tracking-wider">Throughput</span>
+<span class="material-symbols-outlined text-[20px] text-primary">speed</span>
+</div>
+<div class="my-space-md">
+<div class="text-headline-lg font-headline-md text-on-surface">14.2 req/sec</div>
+<div class="text-body-sm text-emerald-600 mt-space-xs">+2.4% vs last hour</div>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[70%]"></div>
+</div>
+</div>
+</div>
+<!-- Active Queues Table & Live Stream Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-space-md">
+<!-- Active Queues Table (Span 2) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-space-lg rounded-xl border border-[#E5DDD0] flex flex-col">
+<div class="flex items-center justify-between mb-space-md">
+<h2 class="font-headline-sm text-on-surface text-lg">Active Queues &amp; Workers</h2>
+<div class="flex items-center gap-space-sm">
+<span class="text-label-sm text-on-surface-variant">Auto-poll: 2s</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#E5DDD0] text-on-surface-variant text-label-sm">
+<th class="py-space-md px-space-sm font-medium">Queue Name</th>
+<th class="py-space-md px-space-sm font-medium">Status</th>
+<th class="py-space-md px-space-sm font-medium text-right">Active</th>
+<th class="py-space-md px-space-sm font-medium text-right">Completed</th>
+<th class="py-space-md px-space-sm font-medium text-right">Failed</th>
+<th class="py-space-md px-space-sm font-medium text-right">Latency</th>
+</tr>
+</thead>
+<tbody class="text-body-md text-on-surface divide-y divide-[#E5DDD0]">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-sm font-mono text-xs text-primary font-medium">outreach-main</td>
+<td class="py-space-md px-space-sm"><span class="px-space-sm py-space-xs bg-emerald-100 text-emerald-800 rounded text-label-sm">Active</span></td>
+<td class="py-space-md px-space-sm text-right">12</td>
+<td class="py-space-md px-space-sm text-right">4,520</td>
+<td class="py-space-md px-space-sm text-right">1</td>
+<td class="py-space-md px-space-sm text-right">45ms</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-sm font-mono text-xs text-primary font-medium">followup-drip</td>
+<td class="py-space-md px-space-sm"><span class="px-space-sm py-space-xs bg-emerald-100 text-emerald-800 rounded text-label-sm">Active</span></td>
+<td class="py-space-md px-space-sm text-right">8</td>
+<td class="py-space-md px-space-sm text-right">1,280</td>
+<td class="py-space-md px-space-sm text-right">0</td>
+<td class="py-space-md px-space-sm text-right">32ms</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-sm font-mono text-xs text-primary font-medium">smtp-dispatch</td>
+<td class="py-space-md px-space-sm"><span class="px-space-sm py-space-xs bg-emerald-100 text-emerald-800 rounded text-label-sm">Active</span></td>
+<td class="py-space-md px-space-sm text-right">5</td>
+<td class="py-space-md px-space-sm text-right">8,912</td>
+<td class="py-space-md px-space-sm text-right">2</td>
+<td class="py-space-md px-space-sm text-right">120ms</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-md px-space-sm font-mono text-xs text-tertiary font-medium">bounce-handler</td>
+<td class="py-space-md px-space-sm"><span class="px-space-sm py-space-xs bg-surface-container-high text-on-surface-variant rounded text-label-sm">Paused</span></td>
+<td class="py-space-md px-space-sm text-right">0</td>
+<td class="py-space-md px-space-sm text-right">340</td>
+<td class="py-space-md px-space-sm text-right">0</td>
+<td class="py-space-md px-space-sm text-right">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Live Job Stream / Terminal log -->
+<div class="bg-[#2B2118] text-[#FBF8F3] p-space-lg rounded-xl border border-[#4d4541] flex flex-col justify-between">
+<div class="flex items-center justify-between pb-space-md border-b border-[#4d4541]">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-error inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+<span class="font-mono text-xs text-tertiary-fixed-dim ml-space-xs">bullmq-worker.log</span>
+</div>
+<button class="text-xs text-tertiary-fixed-dim hover:text-[#FBF8F3] transition-colors font-mono" onclick="clearLogs()">clear</button>
+</div>
+<div class="font-mono text-xs space-y-space-xs my-space-md overflow-y-auto max-h-[300px] pr-space-xs" id="terminal-log">
+<div class="text-emerald-400">[Worker #2] SENT email to alex@stripe.com via smtp.reachinbox.ai (200 OK)</div>
+<div class="text-surface-container-highest">[Worker #1] QUEUED job #8491 (outreach-main)</div>
+<div class="text-amber-300">[Worker #4] RATE_LIMITED smtp.gmail.com. Backoff 1500ms</div>
+<div class="text-emerald-400">[Worker #3] SENT email to sarah@acme.co via smtp.reachinbox.ai (200 OK)</div>
+<div class="text-error-container">[Worker #5] FAILED job #8488: SMTP 550 Mailbox unavailable</div>
+<div class="text-emerald-400">[Worker #2] COMPLETED drip step 2 for lead #9921</div>
+</div>
+<div class="pt-space-md border-t border-[#4d4541] flex items-center justify-between text-xs font-mono text-tertiary-fixed-dim">
+<span>Listening for events...</span>
+<span class="animate-pulse">_</span>
+</div>
+</div>
+</div>
+<script>
+    function retryAllJobs() {
+      const failedEl = document.getElementById('failed-count');
+      failedEl.textContent = '0';
+      const logContainer = document.getElementById('terminal-log');
+      const newLog = document.createElement('div');
+      newLog.className = 'text-emerald-400';
+      newLog.textContent = '[System] Successfully re-queued 3 failed dead-letter jobs.';
+      logContainer.appendChild(newLog);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    function clearLogs() {
+      const logContainer = document.getElementById('terminal-log');
+      logContainer.innerHTML = '<div class="text-tertiary-fixed-dim">[System] Log stream cleared.</div>';
+    }
+
+    function refreshMetrics() {
+      const logContainer = document.getElementById('terminal-log');
+      const newLog = document.createElement('div');
+      newLog.className = 'text-surface-container-highest';
+      newLog.textContent = '[System] Telemetry data manually refreshed from Redis cluster.';
+      logContainer.appendChild(newLog);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    // Simulate incoming logs
+    setInterval(() => {
+      const logContainer = document.getElementById('terminal-log');
+      if(logContainer.children.length > 20) {
+        logContainer.removeChild(logContainer.firstChild);
+      }
+      const emails = ['dev@github.com', 'founders@linear.app', 'lead@vercel.com', 'cto@supabase.io'];
+      const workers = [1, 2, 3, 4, 5];
+      const randomEmail = emails[Math.floor(Math.random() * emails.length)];
+      const randomWorker = workers[Math.floor(Math.random() * workers.length)];
+      
+      const newLog = document.createElement('div');
+      newLog.className = 'text-emerald-400';
+      newLog.textContent = `[Worker #${randomWorker}] SENT email to ${randomEmail} via smtp.reachinbox.ai (200 OK)`;
+      logContainer.appendChild(newLog);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }, 4000);
+  </script>
+</div></main></body></html>
