@@ -10,10 +10,25 @@ let redisConnectionOptions: RedisOptions = {
 
 export function getRedisOptions(): RedisOptions {
   if (config.redisUrl) {
-    return {
-      maxRetriesPerRequest: null,
-      enableReadyCheck: false,
-    };
+    try {
+      const parsed = new URL(config.redisUrl);
+      const isTls = parsed.protocol === 'rediss:';
+      return {
+        host: parsed.hostname,
+        port: parseInt(parsed.port || (isTls ? '6380' : '6379'), 10),
+        username: parsed.username ? decodeURIComponent(parsed.username) : undefined,
+        password: parsed.password ? decodeURIComponent(parsed.password) : undefined,
+        tls: isTls ? { rejectUnauthorized: false } : undefined,
+        maxRetriesPerRequest: null,
+        enableReadyCheck: false,
+      };
+    } catch (err) {
+      console.warn('[Redis] Failed to parse redisUrl, falling back to basic options:', err);
+      return {
+        maxRetriesPerRequest: null,
+        enableReadyCheck: false,
+      };
+    }
   }
   return redisConnectionOptions;
 }
