@@ -1,10 +1,24 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+function sanitizeRedisUrl(raw?: string): string {
+  if (!raw) return '';
+  let cleaned = raw.trim();
+  const hasTlsFlag = cleaned.includes('--tls');
+  const match = cleaned.match(/(rediss?:\/\/[^\s"']+)/);
+  if (match) {
+    cleaned = match[1];
+  }
+  if (hasTlsFlag && cleaned.startsWith('redis://')) {
+    cleaned = cleaned.replace('redis://', 'rediss://');
+  }
+  return cleaned;
+}
+
 export const config = {
   port: parseInt(process.env.PORT || '5001', 10),
   databaseUrl: process.env.DATABASE_URL || 'file:./dev.db',
-  redisUrl: process.env.REDIS_URL || '',
+  redisUrl: sanitizeRedisUrl(process.env.REDIS_URL),
   jwtSecret: process.env.JWT_SECRET || 'reachinbox_default_secret_key',
   workerConcurrency: parseInt(process.env.WORKER_CONCURRENCY || '5', 10),
   defaultMinDelayMs: parseInt(process.env.DEFAULT_MIN_DELAY_MS || '2000', 10),

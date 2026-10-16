@@ -40,9 +40,11 @@ export async function getRedisConnection(): Promise<Redis> {
 
   if (config.redisUrl) {
     console.log(`[Redis] Connecting to external Redis at ${config.redisUrl}...`);
+    const isTls = config.redisUrl.startsWith('rediss://');
     redisInstance = new Redis(config.redisUrl, {
       maxRetriesPerRequest: null,
       enableReadyCheck: false,
+      tls: isTls ? { rejectUnauthorized: false } : undefined,
     });
   } else {
     console.log('[Redis] Connecting to Redis on 127.0.0.1:6379...');
